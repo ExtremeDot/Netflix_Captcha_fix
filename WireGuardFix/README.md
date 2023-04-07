@@ -7,52 +7,48 @@
  
  ***
  
- ```
- wget -N https://raw.githubusercontent.com/fscarmen/warp/main/warp-go.sh && bash warp-go.sh
- ```
- 
- ![image](https://user-images.githubusercontent.com/120102306/230659436-8dc9992f-b703-41df-b141-be25e32cb668.png)
-
-***
-
 ```
- 4. Add WARP IPv6 global network interface for Native dualstack, IPv6 priority (bash warp-go.sh 6)
+nano /ExtremeDot/warp2wg.sh 
 ```
 
 ```
- 3. Use free account (default) 
- ```
- 
- 
+#!/bin/bash
+echo "/ExtremeDot/warp2wg.sh START" >> /runn
+echo "1" > /proc/sys/net/ipv4/ip_forward
+sysctl -w net.ipv4.ip_forward=1
+sysctl -p
+/usr/bin/systemctl start iptables
+sleep 10
 
- ***
- 
- ### available options
- 
- ```
- 
- Run again with warp-go [option] [lisence], such as
- 
- warp-go h (help)
- 
- warp-go o (temporary warp-go switch)
- 
- warp-go u (uninstall WARP web interface and warp-go)
- 
- warp-go v (sync script to latest version)
- 
- warp-go i (replace IP with Netflix support)
- 
- warp-go 4/6 ( WARP IPv4/IPv6 single-stack)
- 
- warp-go d (WARP dual-stack)
- 
- warp-go n (WARP IPv4 non-global)
- 
- warp-go g (WARP global/non-global switching)
- 
- warp-go e (output wireguard and sing-box configuration file)
- 
- warp-go a (Change to Free, WARP+ or Teams account) 
- 
- ```
+IP_BIN=/sbin/ip
+IPTABLESBIN=/usr/sbin/iptables
+WIREGUARD_HOP=10.36.88.0/24
+TABLE_VPN=700
+WARP_GW=10.40.80.1
+WARP_INTERFACE=t2s_warp
+
+$IP_BIN rule add from $WIREGUARD_HOP lookup $TABLE_VPN
+sleep 1
+$IP_BIN route add default via $WARP_GW dev $WARP_INTERFACE proto static table $TABLE_VPN
+sleep 1
+$IPTABLESBIN -t nat -A POSTROUTING -s $WIREGUARD_HOP -o $WARP_INTERFACE -j MASQUERADE
+
+```
+
+```
+chmod +x /ExtremeDot/warp2wg.sh 
+```
+
+test the routing
+
+```
+bash /ExtremeDot/warp2wg.sh
+```
+
+### add to crontab
+```
+crontab -e
+```
+@reboot sudo bash /ExtremeDot/warp2wg.sh
+```
+
