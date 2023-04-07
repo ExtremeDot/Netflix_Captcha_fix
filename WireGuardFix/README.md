@@ -49,6 +49,8 @@ bash /ExtremeDot/warp2wg.sh
 ```
 crontab -e
 ```
+
+```
 @reboot sudo bash /ExtremeDot/warp2wg.sh
 ```
 
@@ -61,7 +63,6 @@ crontab -e
 iptables-save -t nat
 ```
 
-![image](https://user-images.githubusercontent.com/120102306/230672984-0b1e733e-f4e9-46b3-bc31-65fabbf4058e.png)
 
 ```
 -A POSTROUTING -s 10.36.88.0/24 -o t2s_warp -j MASQUERADE
@@ -72,9 +73,11 @@ iptables-save -t nat
   ```
   ip rule | grep 700
   ```
-  it must return this
+
+it must return this
   
-  ```
+
+```
   32765:  from 10.36.88.0/24 lookup 700
   ```
   
@@ -82,16 +85,17 @@ iptables-save -t nat
 
 ```
 ip route show table 700
+
 ```
-   the result must be like this
+
+
+the result must be like this
    
-   ```
-   default via 10.40.80.1 dev t2s_warp proto static
-   ```
+
+```
+
+default via 10.40.80.1 dev t2s_warp proto static
+
+```
    
-   
-  
-
-
-
-
+![image](https://user-images.githubusercontent.com/120102306/230673744-5cef4bf9-eb7b-411c-a67e-745e88740557.png)
