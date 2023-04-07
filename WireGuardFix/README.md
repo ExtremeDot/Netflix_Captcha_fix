@@ -7,43 +7,52 @@
  
  ***
  
- ## Install WarpCLient on VPS
+ ```
+ wget -N https://raw.githubusercontent.com/fscarmen/warp/main/warp-go.sh && bash warp-go.sh
+ ```
+ 
+ ![image](https://user-images.githubusercontent.com/120102306/230659436-8dc9992f-b703-41df-b141-be25e32cb668.png)
+
+***
+
+```
+ 4. Add WARP IPv6 global network interface for Native dualstack, IPv6 priority (bash warp-go.sh 6)
+```
+
+```
+ 3. Use free account (default) 
+ ```
+ 
+ 
+
+ ***
+ 
+ ### available options
  
  ```
-curl -O https://raw.githubusercontent.com/ExtremeDot/GoldenOne_MENU/main/extraMenu.sh && chmod +x extraMenu.sh
-
-mv extraMenu.sh /bin/eMenu && chmod +x /bin/eMenu
-```
-
-
-```
-eMenu
-```
-
-![image](https://user-images.githubusercontent.com/120102306/230651115-3b5e6a9e-8587-42bc-9cc0-f53dde5b2a79.png)
-
-***
-
-Select option 11
-
-```
-11) CloudFlare WARP+
-
-```
-
-![image](https://user-images.githubusercontent.com/120102306/230651195-d2974cf2-ac70-47e4-a7e7-02e919c8a80d.png)
-
-
-```
-2) Install Cloudflare Warp+
-```
-
-goto [cloudflare download page](https://pkg.cloudflareclient.com/packages/cloudflare-warp) and copy the link of installation for your server (just ubuntu and debian)
-
-remove the default address and copy the latest link
-
-![image](https://user-images.githubusercontent.com/120102306/230651482-0e890675-643b-4862-8dfd-eb890f687487.png)
-
-***
-
-
+ 
+ Run again with warp-go [option] [lisence], such as
+ 
+ warp-go h (help)
+ 
+ warp-go o (temporary warp-go switch)
+ 
+ warp-go u (uninstall WARP web interface and warp-go)
+ 
+ warp-go v (sync script to latest version)
+ 
+ warp-go i (replace IP with Netflix support)
+ 
+ warp-go 4/6 ( WARP IPv4/IPv6 single-stack)
+ 
+ warp-go d (WARP dual-stack)
+ 
+ warp-go n (WARP IPv4 non-global)
+ 
+ warp-go g (WARP global/non-global switching)
+ 
+ warp-go e (output wireguard and sing-box configuration file)
+ 
+ warp-go a (Change to Free, WARP+ or Teams account) 
+ 
+ ```
