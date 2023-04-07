@@ -1,3 +1,8 @@
+the running port is set to 
+
+31596
+
+see 01 file
 
 ***
 
