@@ -69,3 +69,8 @@ chmod +x /usr/bin/warp
 
 warp
 ```
+
+```
+https://developers.cloudflare.com/warp-client/get-started/linux/
+
+```
